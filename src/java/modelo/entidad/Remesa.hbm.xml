@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 04-25-2021 08:56:31 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="modelo.entidad.Remesa" table="remesa" catalog="sisremesas" optimistic-lock="version">
+        <id name="idremesa" type="java.lang.Integer">
+            <column name="idremesa" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="cliente" class="modelo.entidad.Cliente" fetch="select">
+            <column name="idcliente" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estado" class="modelo.entidad.Estado" fetch="select">
+            <column name="idestado" not-null="true" />
+        </many-to-one>
+        <many-to-one name="pais" class="modelo.entidad.Pais" fetch="select">
+            <column name="idpais" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="modelo.entidad.Usuario" fetch="select">
+            <column name="idusuario" not-null="true" />
+        </many-to-one>
+        <property name="monto" type="java.lang.Double">
+            <column name="monto" precision="7" />
+        </property>
+        <property name="comision" type="java.lang.Double">
+            <column name="comision" precision="7" />
+        </property>
+        <property name="total" type="java.lang.Double">
+            <column name="total" precision="7" />
+        </property>
+        <property name="destinatario" type="string">
+            <column name="destinatario" length="100" />
+        </property>
+        <property name="claveRemesa" type="string">
+            <column name="clave_remesa" length="45" />
+        </property>
+        <property name="fechaGrabacion" type="timestamp">
+            <column name="fecha_grabacion" length="19" />
+        </property>
+        <property name="fechaRecepcion" type="date">
+            <column name="fecha_recepcion" length="10" />
+        </property>
+        <property name="fechaExpiracion" type="date">
+            <column name="fecha_expiracion" length="10" />
+        </property>
+    </class>
+</hibernate-mapping>
